@@ -15,8 +15,7 @@ const router = express.Router();
  */
 router.post('/command', authenticate, loadSubscription, async (req, res, next) => {
   const { message } = req.body;
-  try {
-    const intent = await askClaude(
+  try {    const intent = await askClaude(
       `Classify this message into one category only: "purchase_request", "stock_query", "report_request", "general_question".
        Respond with ONLY the category word.
        Message: "${message}"`,
@@ -56,7 +55,21 @@ router.post('/command', authenticate, loadSubscription, async (req, res, next) =
        Answer concisely and helpfully as a virtual business mentor/operations manager.`
     );
     res.json({ intent: 'general', result: answer });
-  } catch (err) { next(err); }
+  } catch (err) {
+    const anthropicError = err.response?.data?.error;
+    if (anthropicError) {
+      if (/credit/i.test(anthropicError.message || '')) {
+        return res.status(402).json({
+          error: 'AI features need Anthropic API credits. Add credits at console.anthropic.com → Plans & Billing, then try again.'
+        });
+      }
+      if (anthropicError.type === 'authentication_error') {
+        return res.status(401).json({ error: 'AI service authentication failed. Check the ANTHROPIC_API_KEY configuration.' });
+      }
+      return res.status(502).json({ error: `AI Business Brain unavailable: ${anthropicError.message}` });
+    }
+    next(err);
+  }
 });
 
 /**

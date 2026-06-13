@@ -41,7 +41,8 @@ export default function AIAssistant() {
       }
       setMessages((m) => [...m, { role: 'ai', text: reply }]);
     } catch (err) {
-      setMessages((m) => [...m, { role: 'ai', text: err.response?.data?.error || 'Connection error — check the backend is running.' }]);
+      const msg = err.response?.data?.error || 'Connection error — check the backend is running.';
+      setMessages((m) => [...m, { role: 'ai', text: msg }]);
     } finally {
       setLoading(false);
     }

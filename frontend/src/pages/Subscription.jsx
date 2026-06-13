@@ -51,18 +51,36 @@ export default function Subscription() {
 
       {error && <div className="bg-panel border border-line rounded-2xl p-4 text-sm text-mute">{error}</div>}
 
+      {current && (
+        <div className="bg-gradient-to-r from-cyan/10 to-good/10 border border-good/30 rounded-2xl p-4 flex items-center gap-3">
+          <Check size={20} className="text-good shrink-0" />
+          <div>
+            <div className="font-semibold text-sm capitalize">You're on the {current} plan</div>
+            <div className="text-mute text-xs mt-0.5">Your active benefits are unlocked below — explore upgrades for more power.</div>
+          </div>
+        </div>
+      )}
+
       <div className="space-y-4">
         {plans.map((plan) => {
           const isYearly = plan.name === 'yearly';
           const isCurrent = current === plan.name;
+          const planRank = { free: 0, monthly: 1, yearly: 2 };
+          const isDowngrade = current && planRank[plan.name] < planRank[current];
           return (
             <div
               key={plan.id}
               className={`relative rounded-2xl p-5 border ${
+                isCurrent ? 'border-good shadow-[0_0_24px_rgba(61,220,132,0.2)]' :
                 isYearly ? 'border-amber bg-gradient-to-b from-amber/10 to-panel shadow-glowAmber' : 'border-line bg-panel'
               }`}
             >
-              {isYearly && (
+              {isCurrent && (
+                <div className="absolute -top-3 right-5 bg-good text-base text-[11px] font-bold font-mono px-3 py-1 rounded-full flex items-center gap-1">
+                  <Check size={12} /> ACTIVE PLAN
+                </div>
+              )}
+              {!isCurrent && isYearly && (
                 <div className="absolute -top-3 left-5 bg-amber text-base text-[11px] font-bold font-mono px-3 py-1 rounded-full flex items-center gap-1">
                   <Crown size={12} /> BEST VALUE {savings ? `· SAVE ${savings}%` : ''}
                 </div>
