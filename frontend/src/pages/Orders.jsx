@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ClipboardList, ShoppingCart, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { ClipboardList, ShoppingCart, TrendingUp, CheckCircle2, PackageCheck, X } from 'lucide-react';
 import api from '../services/api.js';
 
 const TABS = [
@@ -27,6 +27,9 @@ export default function Orders() {
   const [tab, setTab] = useState('pr');
   const [data, setData] = useState([]);
   const [error, setError] = useState('');
+  const [inwardPO, setInwardPO] = useState(null);
+  const [inwardRows, setInwardRows] = useState([]);
+  const [inwardBusy, setInwardBusy] = useState(false);
 
   useEffect(() => {
     setError('');

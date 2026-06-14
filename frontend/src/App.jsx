@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, NavLink } from 'react-router-dom';
 import { LayoutDashboard, Bot, Boxes, ClipboardList, CreditCard, LogOut, Zap } from 'lucide-react';
 import { AuthProvider, useAuth } from './context/AuthContext.jsx';
+import Splash from './components/Splash.jsx';
 
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
@@ -86,19 +87,29 @@ function PrivateRoute({ children }) {
 
 function AppRoutes() {
   const { user } = useAuth();
+  const [showSplash, setShowSplash] = useState(() => !sessionStorage.getItem('acip_booted'));
+
+  const handleSplashDone = () => {
+    sessionStorage.setItem('acip_booted', '1');
+    setShowSplash(false);
+  };
+
   return (
-    <Shell>
-      <Routes>
-        <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
-        <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/ai" element={<PrivateRoute><AIAssistant /></PrivateRoute>} />
-        <Route path="/inventory" element={<PrivateRoute><Inventory /></PrivateRoute>} />
-        <Route path="/orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
-        <Route path="/subscription" element={<PrivateRoute><Subscription /></PrivateRoute>} />
-        <Route path="*" element={<Navigate to={user ? '/dashboard' : '/login'} replace />} />
-      </Routes>
-    </Shell>
+    <>
+      {showSplash && <Splash onDone={handleSplashDone} />}
+      <Shell>
+        <Routes>
+          <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
+          <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
+          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+          <Route path="/ai" element={<PrivateRoute><AIAssistant /></PrivateRoute>} />
+          <Route path="/inventory" element={<PrivateRoute><Inventory /></PrivateRoute>} />
+          <Route path="/orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
+          <Route path="/subscription" element={<PrivateRoute><Subscription /></PrivateRoute>} />
+          <Route path="*" element={<Navigate to={user ? '/dashboard' : '/login'} replace />} />
+        </Routes>
+      </Shell>
+    </>
   );
 }
 

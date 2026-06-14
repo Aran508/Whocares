@@ -57,16 +57,25 @@ router.post('/command', authenticate, loadSubscription, async (req, res, next) =
     res.json({ intent: 'general', result: answer });
   } catch (err) {
     const anthropicError = err.response?.data?.error;
+    const isOwnerOrAdmin = ['owner', 'admin'].includes(req.user.role);
     if (anthropicError) {
       if (/credit/i.test(anthropicError.message || '')) {
         return res.status(402).json({
-          error: 'AI features need Anthropic API credits. Add credits at console.anthropic.com → Plans & Billing, then try again.'
+          error: isOwnerOrAdmin
+            ? 'AI features need Anthropic API credits. Add credits at console.anthropic.com → Plans & Billing, then try again.'
+            : 'AI Business Brain is temporarily unavailable. Please contact your administrator.'
         });
       }
       if (anthropicError.type === 'authentication_error') {
-        return res.status(401).json({ error: 'AI service authentication failed. Check the ANTHROPIC_API_KEY configuration.' });
+        return res.status(401).json({
+          error: isOwnerOrAdmin
+            ? 'AI service authentication failed. Check the ANTHROPIC_API_KEY configuration.'
+            : 'AI Business Brain is temporarily unavailable. Please contact your administrator.'
+        });
       }
-      return res.status(502).json({ error: `AI Business Brain unavailable: ${anthropicError.message}` });
+      return res.status(502).json({
+        error: isOwnerOrAdmin ? `AI Business Brain unavailable: ${anthropicError.message}` : 'AI Business Brain is temporarily unavailable. Please try again shortly.'
+      });
     }
     next(err);
   }
