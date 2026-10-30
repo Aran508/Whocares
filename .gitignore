@@ -2,3 +2,6 @@ node_modules/
 dist/
 .env
 *.log
+output/
+stickman-history/**/seg*.mp4
+stickman-history/**/prev/
