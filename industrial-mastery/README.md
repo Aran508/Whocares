@@ -9,7 +9,7 @@ cd industrial-mastery
 npm install
 npm run dev        # development server
 npm run build      # typecheck + production build (dist/)
-npm test           # 67 unit tests (data integrity, calculators, simulations, robotics, exams)
+npm test           # 65 unit tests (data integrity, calculators, simulations, robotics, exams)
 ```
 
 Deploys as a static site (Vercel rewrite included in `vercel.json`).
