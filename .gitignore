@@ -4,3 +4,4 @@ dist/
 *.log
 industrial-mastery/node_modules/
 industrial-mastery/dist/
+industrial-mastery/dist-artifact/
