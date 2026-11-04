@@ -29,10 +29,13 @@ export function computeLevel(completedLessons: number, passedAssessments: number
   const next = LEVELS.find((l) => l.level === current.level + 1);
   let progressToNext = 100;
   if (next) {
-    const lp = next.minLessons ? Math.min(1, completedLessons / next.minLessons) : 1;
-    const ap = next.minAssessments ? Math.min(1, passedAssessments / next.minAssessments) : 1;
-    const cp = next.requiresComprehensive ? (comprehensivePassed ? 1 : 0) : 1;
-    progressToNext = Math.round(((lp + ap + cp) / 3) * 100);
+    // Average only over the requirements this level actually has, so unused
+    // requirements never inflate the bar.
+    const parts: number[] = [];
+    if (next.minLessons) parts.push(Math.min(1, completedLessons / next.minLessons));
+    if (next.minAssessments) parts.push(Math.min(1, passedAssessments / next.minAssessments));
+    if (next.requiresComprehensive) parts.push(comprehensivePassed ? 1 : 0);
+    progressToNext = parts.length ? Math.round((parts.reduce((a, b) => a + b, 0) / parts.length) * 100) : 100;
   }
   return { current, next, progressToNext };
 }

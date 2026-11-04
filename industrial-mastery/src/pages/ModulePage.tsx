@@ -63,7 +63,7 @@ export default function ModulePage() {
           </select>
         </div>
       </div>
-      <ol className="mt-3 grid gap-2">
+      <ol className="mt-3 grid grid-cols-1 gap-2">
         {filtered.map((l, i) => {
           const lp = state.lessons[l.id];
           const complete = isComplete(l.id);

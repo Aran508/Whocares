@@ -44,6 +44,14 @@ function Section({ id, n, title, children, icon }: { id: string; n: number; titl
   );
 }
 
+/** Pronunciation shown when the lesson has none: spell out a leading/parenthesised acronym. */
+function pronunciationOf(l: Lesson): string {
+  if (l.pronunciation) return l.pronunciation;
+  const m = l.title.match(/\(([A-Z0-9&]{2,6})\)/) ?? l.title.match(/^([A-Z0-9]{2,6})\b/);
+  if (m) return m[1].replace(/[^A-Z0-9]/g, '').split('').join('-') + ' (spell the letters)';
+  return 'Plain English — as written';
+}
+
 function managerQuestions(l: Lesson): string[] {
   const q = [
     `Where is ${l.title} visible on the shop floor today, and who owns it on each shift?`,
@@ -123,7 +131,7 @@ export default function LessonPage() {
             </div>
             <div>
               <p className="label">Pronunciation</p>
-              <p className="flex items-center gap-1 text-sm font-medium">{lesson.pronunciation ?? 'Plain English — as written'}<SpeakButton text={lesson.pronunciation ? lesson.pronunciation.replace(/-/g, ' ').replace(/\(.*?\)/g, '') : lesson.title} label={lesson.title} /></p>
+              <p className="flex items-center gap-1 text-sm font-medium">{pronunciationOf(lesson)}<SpeakButton text={pronunciationOf(lesson).startsWith('Plain') ? lesson.title : pronunciationOf(lesson).replace(/-/g, ' ').replace(/\(.*?\)/g, '')} label={lesson.title} /></p>
             </div>
             <div>
               <p className="label">Difficulty</p>
