@@ -1,0 +1,499 @@
+{
+ "format": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 117.584
+ },
+ "audio_tracks": {
+  "1_narration": "audio/track1_narration.wav",
+  "2_music": "audio/track2_music.wav",
+  "3_sfx": "audio/track3_sfx.wav",
+  "final_mix": "audio/final_mix.wav"
+ },
+ "narration": {
+  "voice": "Piper en-us-libritts-high, speaker 846 (CC BY 4.0)",
+  "length_scale": 0.93,
+  "lines": [
+   {
+    "i": 0,
+    "text": "Imagine driving down a dark road...",
+    "start": 0.6,
+    "end": 2.446
+   },
+   {
+    "i": 1,
+    "text": "When suddenly, something with glowing red eyes starts following your car.",
+    "start": 2.796,
+    "end": 6.24
+   },
+   {
+    "i": 2,
+    "text": "This isn't just a horror story.",
+    "start": 6.69,
+    "end": 8.146
+   },
+   {
+    "i": 3,
+    "text": "It's one of America's most famous creature mysteries.",
+    "start": 8.396,
+    "end": 11.121
+   },
+   {
+    "i": 4,
+    "text": "The year was 1966.",
+    "start": 11.571,
+    "end": 13.67
+   },
+   {
+    "i": 5,
+    "text": "The location was Point Pleasant, West Virginia.",
+    "start": 13.87,
+    "end": 16.245
+   },
+   {
+    "i": 6,
+    "text": "On November 15, two young couples were driving near an abandoned wartime factory area, known as the TNT Area.",
+    "start": 16.595,
+    "end": 24.415
+   },
+   {
+    "i": 7,
+    "text": "Then they noticed something strange.",
+    "start": 24.765,
+    "end": 26.39
+   },
+   {
+    "i": 8,
+    "text": "A huge figure, standing near an old building.",
+    "start": 26.69,
+    "end": 28.977
+   },
+   {
+    "i": 9,
+    "text": "It looked almost human... but it had enormous wings, and two glowing red eyes.",
+    "start": 29.327,
+    "end": 33.79
+   },
+   {
+    "i": 10,
+    "text": "They accelerated.",
+    "start": 34.29,
+    "end": 35.172
+   },
+   {
+    "i": 11,
+    "text": "According to their account, the creature suddenly took flight, and followed their car.",
+    "start": 35.422,
+    "end": 39.239
+   },
+   {
+    "i": 12,
+    "text": "The witnesses reported the incident to the police.",
+    "start": 39.639,
+    "end": 41.995
+   },
+   {
+    "i": 13,
+    "text": "And soon, more people began describing similar encounters.",
+    "start": 42.245,
+    "end": 45.521
+   },
+   {
+    "i": 14,
+    "text": "Some claimed they saw it flying above trees.",
+    "start": 45.821,
+    "end": 47.98
+   },
+   {
+    "i": 15,
+    "text": "Others reported seeing it near roads and abandoned buildings.",
+    "start": 48.13,
+    "end": 51.072
+   },
+   {
+    "i": 16,
+    "text": "Newspapers began covering the mysterious figure.",
+    "start": 51.422,
+    "end": 54.696
+   },
+   {
+    "i": 17,
+    "text": "People gave it a name...",
+    "start": 54.996,
+    "end": 56.122
+   },
+   {
+    "i": 18,
+    "text": "The Mothman.",
+    "start": 56.572,
+    "end": 57.144
+   },
+   {
+    "i": 19,
+    "text": "But the story took a darker turn.",
+    "start": 57.844,
+    "end": 59.562
+   },
+   {
+    "i": 20,
+    "text": "On December 15, 1967, the Silver Bridge, connecting West Virginia and Ohio, collapsed into the freezing Ohio River.",
+    "start": 59.962,
+    "end": 68.35
+   },
+   {
+    "i": 21,
+    "text": "46 people died.",
+    "start": 68.8,
+    "end": 70.425
+   },
+   {
+    "i": 22,
+    "text": "After the disaster, some residents connected the Mothman sightings to the tragedy.",
+    "start": 71.625,
+    "end": 75.894
+   },
+   {
+    "i": 23,
+    "text": "They believed the creature was a warning of what was coming.",
+    "start": 76.194,
+    "end": 78.876
+   },
+   {
+    "i": 24,
+    "text": "But here's what the investigation actually found.",
+    "start": 79.376,
+    "end": 81.751
+   },
+   {
+    "i": 25,
+    "text": "The bridge collapsed because of a fracture in a critical steel suspension eyebar.",
+    "start": 82.051,
+    "end": 85.781
+   },
+   {
+    "i": 26,
+    "text": "There was no evidence that the Mothman caused, or predicted, the disaster.",
+    "start": 86.131,
+    "end": 90.222
+   },
+   {
+    "i": 27,
+    "text": "And despite decades of stories, nobody has produced scientifically verified proof that the creature existed.",
+    "start": 90.522,
+    "end": 96.317
+   },
+   {
+    "i": 28,
+    "text": "So what did those people see?",
+    "start": 96.767,
+    "end": 98.283
+   },
+   {
+    "i": 29,
+    "text": "A giant bird?",
+    "start": 98.583,
+    "end": 99.355
+   },
+   {
+    "i": 30,
+    "text": "A misidentified animal?",
+    "start": 99.605,
+    "end": 100.871
+   },
+   {
+    "i": 31,
+    "text": "Or something we still don't understand?",
+    "start": 101.121,
+    "end": 102.808
+   },
+   {
+    "i": 32,
+    "text": "The Mothman remains a mystery.",
+    "start": 103.408,
+    "end": 104.914
+   },
+   {
+    "i": 33,
+    "text": "And the question that keeps the legend alive is simple...",
+    "start": 105.214,
+    "end": 107.638
+   },
+   {
+    "i": 34,
+    "text": "What was flying over Point Pleasant?",
+    "start": 108.088,
+    "end": 109.584
+   }
+  ],
+  "narration_end": 109.584
+ },
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0,
+   "end": 2.68,
+   "card": "A dark road…",
+   "mascot": "normal"
+  },
+  {
+   "scene": 2,
+   "start": 2.68,
+   "end": 6.57,
+   "card": "SOMETHING WAS\nFOLLOWING THEM…",
+   "mascot": "dynamic"
+  },
+  {
+   "scene": 3,
+   "start": 6.57,
+   "end": 8.28,
+   "card": "Not just a\nhorror story",
+   "mascot": "worried"
+  },
+  {
+   "scene": 4,
+   "start": 8.28,
+   "end": 11.45,
+   "card": "Case file: the Mothman",
+   "mascot": "search"
+  },
+  {
+   "scene": 5,
+   "start": 11.45,
+   "end": 13.75,
+   "card": "The year…",
+   "mascot": "normal"
+  },
+  {
+   "scene": 6,
+   "start": 13.75,
+   "end": 16.47,
+   "card": "Point Pleasant, 1966",
+   "mascot": "point"
+  },
+  {
+   "scene": 7,
+   "start": 16.47,
+   "end": 20.5,
+   "card": "November 15",
+   "mascot": "normal"
+  },
+  {
+   "scene": 8,
+   "start": 20.5,
+   "end": 24.64,
+   "card": "The TNT Area",
+   "mascot": "normal"
+  },
+  {
+   "scene": 9,
+   "start": 24.64,
+   "end": 26.57,
+   "card": "Something strange…",
+   "mascot": "worried"
+  },
+  {
+   "scene": 10,
+   "start": 26.57,
+   "end": 29.21,
+   "card": "A huge figure",
+   "mascot": "shocked"
+  },
+  {
+   "scene": 11,
+   "start": 29.21,
+   "end": 34.17,
+   "card": "Almost human…",
+   "mascot": "shocked"
+  },
+  {
+   "scene": 12,
+   "start": 34.17,
+   "end": 35.3,
+   "card": "They accelerated!",
+   "mascot": "shocked"
+  },
+  {
+   "scene": 13,
+   "start": 35.3,
+   "end": 39.52,
+   "card": "It followed\ntheir car",
+   "mascot": "shocked"
+  },
+  {
+   "scene": 14,
+   "start": 39.52,
+   "end": 42.13,
+   "card": "Reported to police",
+   "mascot": "search"
+  },
+  {
+   "scene": 15,
+   "start": 42.13,
+   "end": 45.7,
+   "card": "More encounters",
+   "mascot": "worried"
+  },
+  {
+   "scene": 16,
+   "start": 45.7,
+   "end": 48.01,
+   "card": "Above the trees",
+   "mascot": "normal"
+  },
+  {
+   "scene": 17,
+   "start": 48.01,
+   "end": 51.3,
+   "card": "Roads & ruins",
+   "mascot": "worried"
+  },
+  {
+   "scene": 18,
+   "start": 51.3,
+   "end": 54.88,
+   "card": "In the newspapers",
+   "mascot": "search"
+  },
+  {
+   "scene": 19,
+   "start": 54.88,
+   "end": 56.45,
+   "card": "People gave it\na name…",
+   "mascot": "thinking"
+  },
+  {
+   "scene": 20,
+   "start": 56.45,
+   "end": 57.72,
+   "card": "",
+   "mascot": "shocked"
+  },
+  {
+   "scene": 21,
+   "start": 57.72,
+   "end": 59.84,
+   "card": "A darker turn",
+   "mascot": "worried"
+  },
+  {
+   "scene": 22,
+   "start": 59.84,
+   "end": 65.16,
+   "card": "December 15, 1967",
+   "mascot": "normal"
+  },
+  {
+   "scene": 23,
+   "start": 65.16,
+   "end": 68.68,
+   "card": "The bridge collapsed",
+   "mascot": "shocked"
+  },
+  {
+   "scene": 24,
+   "start": 68.68,
+   "end": 71.5,
+   "card": "",
+   "mascot": "worried"
+  },
+  {
+   "scene": 25,
+   "start": 71.5,
+   "end": 76.07,
+   "card": "Some connected them",
+   "mascot": "thinking"
+  },
+  {
+   "scene": 26,
+   "start": 76.07,
+   "end": 79.26,
+   "card": "A warning?",
+   "mascot": "worried"
+  },
+  {
+   "scene": 27,
+   "start": 79.26,
+   "end": 81.93,
+   "card": "What investigators found",
+   "mascot": "search"
+  },
+  {
+   "scene": 28,
+   "start": 81.93,
+   "end": 86.01,
+   "card": "A cracked eyebar",
+   "mascot": "dynamic"
+  },
+  {
+   "scene": 29,
+   "start": 86.01,
+   "end": 90.4,
+   "card": "No evidence",
+   "mascot": "normal"
+  },
+  {
+   "scene": 30,
+   "start": 90.4,
+   "end": 96.65,
+   "card": "Decades of stories",
+   "mascot": "thinking"
+  },
+  {
+   "scene": 31,
+   "start": 96.65,
+   "end": 98.46,
+   "card": "So what did\nthey see?",
+   "mascot": "thinking"
+  },
+  {
+   "scene": 32,
+   "start": 98.46,
+   "end": 99.48,
+   "card": "A giant bird?",
+   "mascot": "search"
+  },
+  {
+   "scene": 33,
+   "start": 99.48,
+   "end": 101,
+   "card": "A misidentified animal?",
+   "mascot": "thinking"
+  },
+  {
+   "scene": 34,
+   "start": 101,
+   "end": 103.29,
+   "card": "Or something else?",
+   "mascot": "worried"
+  },
+  {
+   "scene": 35,
+   "start": 103.29,
+   "end": 105.09,
+   "card": "Still a mystery",
+   "mascot": "normal"
+  },
+  {
+   "scene": 36,
+   "start": 105.09,
+   "end": 107.97,
+   "card": "The legend lives on",
+   "mascot": "worried"
+  },
+  {
+   "scene": 37,
+   "start": 107.97,
+   "end": 112.78,
+   "card": "",
+   "mascot": "thinking"
+  },
+  {
+   "scene": 38,
+   "start": 112.78,
+   "end": 117.58,
+   "card": "",
+   "mascot": ""
+  }
+ ]
+}

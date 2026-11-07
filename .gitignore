@@ -5,3 +5,4 @@ dist/
 output/
 stickman-history/**/seg*.mp4
 stickman-history/**/prev/
+stickman-stories/**/prev/
