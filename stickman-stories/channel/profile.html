@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:Archivo;src:url(fonts/ArchivoBlack-Regular.ttf)}@font-face{font-family:Elite;src:url(fonts/SpecialElite-Regular.ttf)}body{margin:0}</style></head><body>
+<canvas id=a width=800 height=800></canvas><canvas id=b width=2560 height=1440></canvas>
+<script src="kit.js"></script><script src="art.js"></script><script>
+(async()=>{await Promise.all(['Archivo','Elite'].map(f=>document.fonts.load('40px '+f)));await loadImages(['newspapers','silver_bridge_aerial','ink_mothman']);
+// ---- avatar 800x800 (shown as a circle)
+function title2(c,x,y,size){c.save();c.font=`${size}px Archivo`;const a='STICKMAN ',b='STORIES';const wa=c.measureText(a).width,wb=c.measureText(b).width;const x0=x-(wa+wb)/2;text(c,a,x0+wa/2,y,size,'#211c16');text(c,b,x0+wa+wb/2,y,size,C.red);c.restore();return wa+wb;}
+let c=document.getElementById('a').getContext('2d'); let T=texture(800,800); c.drawImage(T,0,0);
+const g=c.createRadialGradient(400,380,60,400,380,420); g.addColorStop(0,'rgba(220,70,45,0.42)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,800,800);
+moon(c,600,170,46);
+mothman(c,215,520,0.45,1,{spread:1,sil:true,eyes:1});
+chibi(c,1,'search',{x:440,y:610,s:2.45});
+// ---- banner 2560x1440 (safe area 1546x423 centred: x 507-2053, y 508-931)
+c=document.getElementById('b').getContext('2d'); T=texture(2560,1440); c.drawImage(T,0,0);
+const g2=c.createRadialGradient(1280,720,100,1280,720,1100); g2.addColorStop(0,'rgba(200,60,40,0.18)'); g2.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g2; c.fillRect(0,0,2560,1440);
+moon(c,1990,560,52);
+photo(c,'newspapers',300,560,330,240,-0.08,'real clippings',1,{zoom:1.2,fx:0.1,fy:0.1,capSize:24});
+photo(c,'ink_mothman',2270,880,330,200,0.07,"artist's impression",1,{capSize:24});
+mothman(c,1960,940,0.48,1,{spread:1,sil:true,eyes:1});
+c.save(); c.translate(1290,650); c.rotate(-0.02); paper(c,0,0,1180,200,0,5); title2(c,0,6,100); c.restore();
+tag(c,'REAL HISTORY · TRUE MYSTERIES · EPIC ANIMATIONS',1290,818,0.012,1,{size:40});
+tag(c,'SUBSCRIBE FOR NEW STORIES',1290,895,-0.02,1,{size:30,col:C.redD});
+chibi(c,1,'point',{x:600,y:880,s:1.05});
+window.DONE=1;})();
+</script></body></html>
