@@ -244,7 +244,7 @@ sc(TL.narration_end + 3.2, (c, u, d, t) => {
   const a = ss(0, 0.4, u); c.save(); c.translate(540, 860); c.rotate(-0.04); const k = lerp(1.8, 1, back(a)); c.scale(k, k); c.globalAlpha = clamp(a * 3, 0, 1);
   paper(c, 0, 0, 860, 360, 0, 5); text(c, 'STICKMAN', 0, -60, 120, '#211c16'); text(c, 'STORIES', 0, 70, 120, C.red); c.restore();
   tag(c, 'REAL MYSTERIES · TRUE STORIES', 540, 1120, 0.02, ss(0.5, 0.8, u), { size: 32 });
-  mascot(c, t, 'happy', { x: 540, y: 1460, s: 1.5 });
+  chibi(c, t, 'happy', { x: 540, y: 1440, s: 1.25 });
 }, { noCard: true, noMascot: true, fadeOut: true });
 
 // ---------- frame renderer
@@ -258,7 +258,7 @@ function drawShot(c, i, t) {
   s.draw(c, u, d, t); c.restore();
   if (!s.noCard && s.card) { c.save(); card(c, s.card, u, { hi: s.hi, size: s.size }); c.restore(); }
   const mood = typeof s.mood === 'function' ? s.mood(u) : s.mood;
-  if (!s.noMascot && !(s.noMascotAfter && u > s.noMascotAfter)) mascot(c, t, mood || 'normal');
+  if (!s.noMascot && !(s.noMascotAfter && u > s.noMascotAfter)) chibi(c, t, mood || 'normal');
 }
 function renderAt(t) {
   const c = ctx; let i = SC.length - 1; while (i > 0 && SC[i].start > t) i--;

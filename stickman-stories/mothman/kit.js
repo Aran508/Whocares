@@ -229,3 +229,70 @@ function mascot(c, t, mood = 'normal', opt = {}) {
   if (mood === 'thinking') { text(c, '?', 92, -150, 80, '#ffd34a', { stroke: '#0a0d18', sw: 10 }); }
   c.restore();
 }
+
+// ---------- chibi anime detective (replaces the robot mascot). Same moods API.
+function chibi(c, t, mood = 'normal', opt = {}) {
+  const x = opt.x ?? 960, y = opt.y ?? 1790, s = opt.s ?? 0.62;
+  const bob = Math.sin(t * 3.4) * 4, hop = mood === 'shocked' ? -Math.abs(Math.sin(t * 13)) * 8 : 0;
+  const SK = '#f6d4b8', HAIR = '#1e2238', HOOD = '#c8322c', HOODD = '#8e1d19', OUT = '#0d0f1a';
+  c.save(); c.translate(x, y + bob + hop); c.scale(s, s); c.lineJoin = 'round'; c.lineCap = 'round';
+  c.fillStyle = 'rgba(0,0,0,0.35)'; c.beginPath(); c.ellipse(0, 118 - bob, 70, 12, 0, 0, 7); c.fill();
+  // legs + shoes
+  c.fillStyle = '#2a2f45'; c.fillRect(-26, 66, 20, 44); c.fillRect(6, 66, 20, 44);
+  c.fillStyle = '#f4efe2'; c.beginPath(); c.roundRect(-36, 102, 32, 16, 8); c.roundRect(4, 102, 32, 16, 8); c.fill(); c.strokeStyle = OUT; c.lineWidth = 4; c.stroke();
+  // arms (hoodie sleeves)
+  const arm = (x0, y0, x1, y1) => { c.strokeStyle = OUT; c.lineWidth = 24; c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.stroke(); c.strokeStyle = HOOD; c.lineWidth = 17; c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.stroke(); c.fillStyle = SK; c.beginPath(); c.arc(x1, y1, 10, 0, 7); c.fill(); c.lineWidth = 3; c.strokeStyle = OUT; c.stroke(); };
+  let L = [-40, 10, -54, 58], R = [40, 10, 54, 58];
+  if (mood === 'point') { L = [-40, 8, -100, -30 + Math.sin(t * 6) * 4]; }
+  else if (mood === 'shocked') { L = [-40, 4, -70, -54]; R = [40, 4, 70, -54]; }
+  else if (mood === 'search') { R = [40, 8, 64, -40]; }
+  else if (mood === 'thinking') { R = [40, 8, 30, -40]; }
+  else if (mood === 'happy') { L = [-40, 4, -66, -50]; }
+  arm(...L); arm(...R);
+  // body (hoodie)
+  c.beginPath(); c.moveTo(-44, -6); c.quadraticCurveTo(-52, 60, -40, 74); c.lineTo(40, 74); c.quadraticCurveTo(52, 60, 44, -6); c.quadraticCurveTo(0, -20, -44, -6); c.closePath();
+  c.fillStyle = HOOD; c.fill(); c.strokeStyle = OUT; c.lineWidth = 4; c.stroke();
+  c.fillStyle = HOODD; c.fillRect(-22, 40, 44, 18); c.strokeStyle = '#f4efe2'; c.lineWidth = 3; c.beginPath(); c.moveTo(-8, -4); c.lineTo(-10, 24); c.moveTo(8, -4); c.lineTo(10, 24); c.stroke();
+  if (mood === 'search') { c.strokeStyle = '#c9a34a'; c.lineWidth = 7; c.beginPath(); c.arc(74, -74, 26, 0, 7); c.stroke(); c.fillStyle = 'rgba(190,230,255,0.35)'; c.fill(); c.beginPath(); c.moveTo(68, -50); c.lineTo(64, -40); c.stroke(); }
+  // head
+  c.save(); c.translate(0, -78); c.rotate(mood === 'worried' ? Math.sin(t * 2) * 0.05 : mood === 'shocked' ? Math.sin(t * 22) * 0.03 : mood === 'thinking' ? 0.08 : 0);
+  // back hair
+  c.fillStyle = HAIR; c.beginPath(); c.ellipse(0, -6, 74, 72, 0, 0, 7); c.fill(); c.strokeStyle = OUT; c.lineWidth = 4; c.stroke();
+  // face
+  c.fillStyle = SK; c.beginPath(); c.ellipse(0, 10, 62, 58, 0, 0, 7); c.fill(); c.stroke();
+  // fringe spikes
+  c.fillStyle = HAIR; c.beginPath(); c.moveTo(-74, 0); c.quadraticCurveTo(-70, -70, 0, -78); c.quadraticCurveTo(70, -70, 74, 0);
+  const sp = [[60, -6], [44, -30], [30, 4], [12, -28], [-4, 6], [-20, -26], [-34, 2], [-50, -24], [-64, 8]];
+  sp.forEach(([px, py]) => c.lineTo(px, py)); c.closePath(); c.fill(); c.stroke();
+  c.beginPath(); c.moveTo(10, -78); c.quadraticCurveTo(30, -110, 52, -104); c.quadraticCurveTo(30, -96, 26, -76); c.fill(); c.stroke(); // ahoge
+  // eyes
+  const blink = (t % 3.9) < 0.11;
+  for (const sd of [-1, 1]) {
+    const ex = sd * 26, ey = 18;
+    if (mood === 'happy') { c.strokeStyle = OUT; c.lineWidth = 5; c.beginPath(); c.arc(ex, ey + 6, 12, Math.PI * 1.15, Math.PI * 1.85); c.stroke(); continue; }
+    if (blink) { c.strokeStyle = OUT; c.lineWidth = 5; c.beginPath(); c.moveTo(ex - 12, ey); c.lineTo(ex + 12, ey); c.stroke(); continue; }
+    const big = mood === 'shocked' ? 1.15 : 1;
+    c.fillStyle = '#fff'; c.beginPath(); c.ellipse(ex, ey, 15 * big, 19 * big, 0, 0, 7); c.fill(); c.strokeStyle = OUT; c.lineWidth = 3.5; c.stroke();
+    const ir = mood === 'shocked' ? 7 : 11; const g = c.createLinearGradient(0, ey - 14, 0, ey + 14); g.addColorStop(0, '#7a3a12'); g.addColorStop(1, '#e8a33a');
+    c.fillStyle = g; c.beginPath(); c.ellipse(ex + (mood === 'point' ? -4 : 0), ey + 2, ir, ir * 1.3, 0, 0, 7); c.fill();
+    c.fillStyle = '#fff'; c.beginPath(); c.arc(ex - 4, ey - 6, 4.5, 0, 7); c.arc(ex + 4, ey + 6, 2, 0, 7); c.fill();
+    // brows
+    c.strokeStyle = HAIR; c.lineWidth = 4; c.beginPath();
+    if (mood === 'worried') { c.moveTo(ex - 12 * sd, ey - 24); c.lineTo(ex + 10 * sd, ey - 30); }
+    else if (mood === 'search' || mood === 'point') { c.moveTo(ex - 12 * sd, ey - 32); c.lineTo(ex + 10 * sd, ey - 26); }
+    c.stroke();
+  }
+  // blush + mouth
+  c.fillStyle = 'rgba(240,120,120,0.45)'; c.beginPath(); c.ellipse(-40, 40, 10, 6, 0, 0, 7); c.ellipse(40, 40, 10, 6, 0, 0, 7); c.fill();
+  c.strokeStyle = OUT; c.fillStyle = '#7a2a2a'; c.lineWidth = 3.5; c.beginPath();
+  if (mood === 'shocked') { c.ellipse(0, 46, 8, 10, 0, 0, 7); c.fill(); c.stroke(); }
+  else if (mood === 'happy') { c.moveTo(-12, 40); c.quadraticCurveTo(0, 56, 12, 40); c.closePath(); c.fill(); c.stroke(); }
+  else if (mood === 'worried') { c.moveTo(-9, 48); c.quadraticCurveTo(0, 42, 9, 48); c.stroke(); }
+  else if (mood === 'thinking') { c.moveTo(-6, 46); c.lineTo(8, 44); c.stroke(); }
+  else { c.moveTo(-8, 44); c.quadraticCurveTo(0, 49, 8, 44); c.stroke(); }
+  if (mood === 'worried' || mood === 'shocked') { c.fillStyle = '#9fd8ff'; c.beginPath(); c.moveTo(62, -10); c.quadraticCurveTo(72, 8, 62, 12); c.quadraticCurveTo(52, 8, 62, -10); c.fill(); }
+  c.restore();
+  if (mood === 'thinking') text(c, '?', 82, -170, 64, '#ffd34a', { stroke: '#0a0d18', sw: 9 });
+  if (mood === 'shocked') text(c, '!', 86, -170, 70, '#ff4a3a', { stroke: '#0a0d18', sw: 9 });
+  c.restore();
+}
