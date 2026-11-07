@@ -17,11 +17,12 @@ function loadImages(list) { return Promise.all(list.map(n => new Promise(r => { 
 
 // ---------- background
 let BG = null;
-function makeBG() {
-  BG = document.createElement('canvas'); BG.width = W; BG.height = H; const g = BG.getContext('2d');
+function makeBG() { BG = texture(W, H); }
+function texture(W, H) {
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H; const g = cv.getContext('2d');
   g.fillStyle = C.navy; g.fillRect(0, 0, W, H);
   const r = rnd(3);
-  for (let i = 0; i < 260; i++) {
+  for (let i = 0; i < Math.round(260 * W * H / (1080 * 1920)); i++) {
     const x = r() * W, y = r() * H, s = 40 + r() * 220, d = r() < 0.5;
     const gr = g.createRadialGradient(x, y, 0, x, y, s);
     gr.addColorStop(0, d ? 'rgba(8,12,28,0.22)' : 'rgba(70,90,140,0.12)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
@@ -32,6 +33,7 @@ function makeBG() {
   g.putImageData(id, 0, 0);
   const v = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.75); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.45)');
   g.fillStyle = v; g.fillRect(0, 0, W, H);
+  return cv;
 }
 function bg(c, dark = 0) { c.drawImage(BG, 0, 0); if (dark) { c.fillStyle = `rgba(4,6,14,${dark})`; c.fillRect(0, 0, W, H); } }
 function moon(c, x = 930, y = 170, r = 46, a = 1) {
@@ -81,7 +83,7 @@ function tag(c, s, x, y, rot = 0, a = 1, opt = {}) {
 }
 function stamp(c, s, x, y, rot, a, size = 64, col = C.red) {
   if (a <= 0) return;
-  c.save(); c.translate(x, y); c.rotate(rot); const sc = lerp(1.8, 1, ease(a)); c.scale(sc, sc); c.globalAlpha = clamp(a * 1.4, 0, 0.92);
+  c.save(); c.translate(x, y); c.rotate(rot); const sc = lerp(1.8, 1, ease(a)); c.scale(sc, sc); c.globalAlpha *= clamp(a * 1.4, 0, 0.92);
   c.font = font('Archivo', size); const w = c.measureText(s).width + 40;
   c.strokeStyle = col; c.lineWidth = 7; c.strokeRect(-w / 2, -size * 0.75, w, size * 1.5);
   text(c, s, 0, 4, size, col); c.restore();

@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Archivo;src:url(fonts/ArchivoBlack-Regular.ttf)}@font-face{font-family:Elite;src:url(fonts/SpecialElite-Regular.ttf)}@font-face{font-family:Marker;src:url(fonts/PermanentMarker-Regular.ttf)}
+body{margin:0;background:#000}</style></head><body><canvas id=c width=1920 height=1080></canvas><canvas id=v width=1080 height=1920 style="display:none"></canvas>
+<script src="timeline.js"></script><script src="kit.js"></script><script src="art.js"></script>
+<script>const ctx=document.getElementById('v').getContext('2d');const lctx=document.getElementById('c').getContext('2d');</script><script src="scenes.js"></script><script src="landscape.js"></script>
+<script>window.READY=(async()=>{await Promise.all(['Archivo','Elite','Marker'].map(f=>document.fonts.load('40px '+f)));await loadImages(['newspapers','ink_mothman','silver_bridge_aerial','car_painting','local_map']);makeBG();buildChunks(TL.lines);initLandscape();window.renderAt=t=>renderLandscape(t,lctx);return true})();</script>
+</body></html>

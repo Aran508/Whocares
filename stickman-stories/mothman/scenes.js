@@ -244,11 +244,12 @@ sc(TL.narration_end + 3.2, (c, u, d, t) => {
   const a = ss(0, 0.4, u); c.save(); c.translate(540, 860); c.rotate(-0.04); const k = lerp(1.8, 1, back(a)); c.scale(k, k); c.globalAlpha = clamp(a * 3, 0, 1);
   paper(c, 0, 0, 860, 360, 0, 5); text(c, 'STICKMAN', 0, -60, 120, '#211c16'); text(c, 'STORIES', 0, 70, 120, C.red); c.restore();
   tag(c, 'REAL MYSTERIES · TRUE STORIES', 540, 1120, 0.02, ss(0.5, 0.8, u), { size: 32 });
-  chibi(c, t, 'happy', { x: 540, y: 1440, s: 1.25 });
+  if (OVERLAYS) chibi(c, t, 'happy', { x: 540, y: 1440, s: 1.25 });
 }, { noCard: true, noMascot: true, fadeOut: true });
 
 // ---------- frame renderer
 const XF = 0.22; // quick crossfade between shots
+let OVERLAYS = true;
 const BUF = document.createElement('canvas'); BUF.width = W; BUF.height = H; const bctx = BUF.getContext('2d');
 function drawShot(c, i, t) {
   const s = SC[i], end = i + 1 < SC.length ? SC[i + 1].start : ENDT, u = t - s.start, d = end - s.start;
@@ -256,6 +257,7 @@ function drawShot(c, i, t) {
   // gentle push-in on every shot
   const z = 1 + 0.035 * clamp(u / d, 0, 1); c.translate(W / 2, H * 0.48); c.scale(z, z); c.translate(-W / 2, -H * 0.48);
   s.draw(c, u, d, t); c.restore();
+  if (!OVERLAYS) return;
   if (!s.noCard && s.card) { c.save(); card(c, s.card, u, { hi: s.hi, size: s.size }); c.restore(); }
   const mood = typeof s.mood === 'function' ? s.mood(u) : s.mood;
   if (!s.noMascot && !(s.noMascotAfter && u > s.noMascotAfter)) chibi(c, t, mood || 'normal');
